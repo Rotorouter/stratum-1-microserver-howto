@@ -732,7 +732,7 @@ Then do this {--build}:
 ------------------------------------------------------------------------
 $ git clone git://git.savannah.nongnu.org/gpsd.git
 $ cd gpsd
-$ scons timeservice=yes magic_hat=yes nmea0183=yes fixed_port_speed=9600 fixed_stop_bits=1
+$ scons ntpshm=yes shm_export=yes pps=yes timeservice=yes magic_hat=yes nmea0183=yes fixed_port_speed=9600 fixed_stop_bits=1
 ------------------------------------------------------------------------
 
 This builds gpsd in a minimal, fixed-speed timeserver mode.
@@ -873,11 +873,11 @@ Run your newly built ntpd, telling it to step time if required:
 # ./ntpsec/build/main/ntpd/ntpd -g -c ntp.conf
 ------------------------------------------------------------------------
 
-Run ./ntpsec/ntpq/ntpq -p and look at what it returns. Be patient, as
+Run ./ntpsec/ntpclients/ntpq -p and look at what it returns. Be patient, as
 it can sometimes take a few seconds to complete.
 
 ------------------------------------------------------------------------
-$ ntpsec/build/main/ntpq/ntpq -p
+$ ./ntpsec/ntpclients/ntpq -p
      remote           refid      st t when poll reach   delay   offset  jitter
 ==============================================================================
 -SHM(0)          .GPS.            0 l   15   64    1    0.000  -515.07   0.002
